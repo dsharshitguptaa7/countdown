@@ -41,5 +41,5 @@ const timer = setInterval(() => {
 
 // 🔗 Redirect
 function goToMain() {
-  window.location.href = "https://your-main-site-link.com";
+  window.location.href = "https://dsharshitguptaa7.github.io/birthday/";
 }
