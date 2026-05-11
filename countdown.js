@@ -164,5 +164,6 @@ document.head.appendChild(style);
 
 // 🔗 Redirect
 function goToMain() {
-  window.location.href = "https://dsharshitguptaa7.github.io/birthday/manali/";
+  window.location.href = "https://dsharshitguptaa7.github.io/birthday/";
 }
+>>>>>>> d859715e2966e89c208916463f2cdead2a7ab76b
