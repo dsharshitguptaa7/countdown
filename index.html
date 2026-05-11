@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Waiting for Something ❤️</title>
+<title>Manali's Birthday Surprise 🎉</title>
 
 <link rel="stylesheet" href="countdown.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,20 +14,48 @@
 <div class="stars"></div>
 
 <div class="container">
-  <h1>Something is waiting for you ❤️</h1>
-  <p class="subtitle">Every second is bringing you closer...</p>
+  <h1 class="main-title">✨ Manali's Birthday ✨</h1>
+  <p class="subtitle" id="subtitle">Something magical is coming your way...</p>
 
-  <div id="timer">
-    <span id="days">0</span>d :
-    <span id="hours">0</span>h :
-    <span id="minutes">0</span>m :
-    <span id="seconds">0</span>s
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
   </div>
 
-  <button id="surpriseBtn" onclick="goToMain()">
-    Open Your Surprise ❤️
+  <div id="timer" class="timer-box">
+    <div class="timer-unit">
+      <span id="days" class="timer-value">0</span>
+      <span class="timer-label">Days</span>
+    </div>
+    <div class="timer-separator">:</div>
+    <div class="timer-unit">
+      <span id="hours" class="timer-value">0</span>
+      <span class="timer-label">Hours</span>
+    </div>
+    <div class="timer-separator">:</div>
+    <div class="timer-unit">
+      <span id="minutes" class="timer-value">0</span>
+      <span class="timer-label">Minutes</span>
+    </div>
+    <div class="timer-separator">:</div>
+    <div class="timer-unit">
+      <span id="seconds" class="timer-value">0</span>
+      <span class="timer-label">Seconds</span>
+    </div>
+  </div>
+
+  <p class="motivational" id="motivational"></p>
+
+  <div class="fun-fact" id="funFact">
+    <span class="fact-icon">💡</span> <span id="factText"></span>
+  </div>
+
+  <button id="surpriseBtn" class="surprise-btn" onclick="goToMain()">
+    <span>Open Your Surprise</span> 🎁
   </button>
 </div>
+
+<div id="confetti" class="confetti"></div>
+<div id="hearts" class="hearts"></div>
 
 <script src="countdown.js"></script>
 
