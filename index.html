@@ -52,6 +52,58 @@
   <button id="surpriseBtn" class="surprise-btn" onclick="goToMain()">
     <span>Open Your Surprise</span> 🎁
   </button>
+
+  <!-- 🎁 GIFTS TIMELINE SECTION -->
+  <div class="gifts-timeline-section">
+    <h2 class="timeline-title">🎁 Your Gifts Journey 🎁</h2>
+    
+    <!-- Timeline -->
+    <div class="timeline-container">
+      <div class="timeline-progress" id="timelineProgress"></div>
+      
+      <!-- Milestone 1: Diary -->
+      <div class="timeline-milestone milestone-1">
+        <div class="milestone-marker">
+          <div class="milestone-dot"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-label">Gift #1</div>
+          <div class="milestone-name">Your Diary 📖</div>
+          <div class="diary-image-container">
+            <img src="diary.jpeg" alt="Special Diary" class="diary-image">
+            <div class="diary-overlay">📖 Moments of your Life 📖</div>
+          </div>
+          <p class="milestone-time">Available Now ✨</p>
+        </div>
+      </div>
+
+      <!-- Milestone 2: Mystery Website -->
+      <div class="timeline-milestone milestone-2">
+        <div class="milestone-marker">
+          <div class="milestone-dot"></div>
+        </div>
+        <div class="milestone-content">
+          <div class="milestone-label">Gift #2</div>
+          <div class="milestone-name">One more Surprise 🎉</div>
+          <div class="mystery-box" id="mysteryBox">
+            <div class="mystery-question">?</div>
+            <div class="loading-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <p class="mystery-text">Unlocks at 12:00 AM...</p>
+          </div>
+          <div class="gift-link-container" id="giftLink" style="display: none;">
+            <a href="https://dsharshitguptaa7.github.io/birthday/" class="gift-link-btn">
+              🎊 Open Your Surprise! 🎊
+            </a>
+          </div>
+          <p class="milestone-time" id="unlockedText" style="display: none; color: #00ff00;">🔓 Unlocked!</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="confetti" class="confetti"></div>

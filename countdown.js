@@ -14,44 +14,67 @@ let factIndex = 0;
 
 function updateFact() {
   const factText = document.getElementById("factText");
-  factText.innerText = birthdayFacts[factIndex];
-  factIndex = (factIndex + 1) % birthdayFacts.length;
+
+  if (factText) {
+    factText.innerText = birthdayFacts[factIndex];
+    factIndex = (factIndex + 1) % birthdayFacts.length;
+  }
 }
 
 setInterval(updateFact, 8000);
 updateFact();
 
-// 💓 Generate floating hearts
+
+// 💓 Floating Hearts
 function createFloatingHearts() {
+
   const heartsContainer = document.getElementById("hearts");
+
+  if (!heartsContainer) return;
+
   const heartEmojis = ["💖", "💕", "💗", "💝", "✨", "🌟"];
-  
+
   const heart = document.createElement("div");
+
   heart.className = "heart";
-  heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+  heart.innerText =
+    heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+
   heart.style.left = Math.random() * 100 + "%";
-  heart.style.animationDuration = (Math.random() * 4 + 5) + "s";
-  heart.style.animationDelay = Math.random() * 0.5 + "s";
-  
+  heart.style.animationDuration =
+    (Math.random() * 4 + 5) + "s";
+
   heartsContainer.appendChild(heart);
-  
-  setTimeout(() => heart.remove(), 10000);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
 }
 
 setInterval(createFloatingHearts, 1000);
 
-// ⭐ Create stars
+
+// ⭐ Stars
 const starsContainer = document.querySelector(".stars");
 
-for (let i = 0; i < 100; i++) {
-  let star = document.createElement("span");
-  star.style.left = Math.random() * 100 + "vw";
-  star.style.top = Math.random() * 100 + "vh";
-  star.style.animationDuration = (Math.random() * 5 + 5) + "s";
-  starsContainer.appendChild(star);
+if (starsContainer) {
+
+  for (let i = 0; i < 100; i++) {
+
+    const star = document.createElement("span");
+
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+
+    star.style.animationDuration =
+      (Math.random() * 5 + 5) + "s";
+
+    starsContainer.appendChild(star);
+  }
 }
 
-// 🎊 Motivational messages
+
+// 🎊 Motivational Messages
 const motivationalMessages = [
   "Get ready for something special! ✨",
   "The countdown has begun! ⏳",
@@ -64,51 +87,150 @@ const motivationalMessages = [
 let messageIndex = 0;
 
 function updateMotivationalMessage() {
-  const motivational = document.getElementById("motivational");
-  motivational.innerText = motivationalMessages[messageIndex];
-  messageIndex = (messageIndex + 1) % motivationalMessages.length;
+
+  const motivational =
+    document.getElementById("motivational");
+
+  if (motivational) {
+
+    motivational.innerText =
+      motivationalMessages[messageIndex];
+
+    messageIndex =
+      (messageIndex + 1) %
+      motivationalMessages.length;
+  }
 }
 
 setInterval(updateMotivationalMessage, 5000);
 updateMotivationalMessage();
 
-// ⏳ Countdown
-const targetDate = new Date("May 15, 2026 00:00:00").getTime();
-const startDate = new Date("May 11, 2026 00:00:00").getTime();
+
+// 🔒 FORCE HIDE ON LOAD
+const giftLink = document.getElementById("giftLink");
+const unlockedText = document.getElementById("unlockedText");
+const mysteryBox = document.getElementById("mysteryBox");
+const surpriseBtn = document.getElementById("surpriseBtn");
+
+if (giftLink) {
+  giftLink.style.display = "none";
+}
+
+if (unlockedText) {
+  unlockedText.style.display = "none";
+}
+
+if (surpriseBtn) {
+  surpriseBtn.style.display = "none";
+}
+
+
+// ⏳ COUNTDOWN
+const targetDate =
+  new Date(2026, 4, 15, 0, 0, 0).getTime();
+
+const startDate =
+  new Date(2026, 4, 11, 0, 0, 0).getTime();
+
 const totalTime = targetDate - startDate;
 
+
 const timer = setInterval(() => {
+
   const now = new Date().getTime();
+
   const gap = targetDate - now;
+
   const elapsed = now - startDate;
-  const progress = (elapsed / totalTime) * 100;
-  
-  document.getElementById("progressFill").style.width = Math.min(progress, 100) + "%";
 
+  const progress =
+    (elapsed / totalTime) * 100;
+
+
+  // Progress Bar
+  const progressFill =
+    document.getElementById("progressFill");
+
+  if (progressFill) {
+
+    progressFill.style.width =
+      Math.min(progress, 100) + "%";
+  }
+
+
+  // Countdown Finished
   if (gap <= 0) {
+
     clearInterval(timer);
-    document.getElementById("progressFill").style.width = "100%";
 
-    const timerBox = document.getElementById("timer");
-    timerBox.innerHTML = '<div class="timer-unit"><span class="timer-value" style="font-size: 4rem;">🎂</span></div><div class="timer-unit"><span class="timer-value" style="font-size: 2.5rem; letter-spacing: 3px;">HAPPY BIRTHDAY!</span></div><div class="timer-unit"><span class="timer-value" style="font-size: 4rem;">🎉</span></div>';
-    
-    document.getElementById("subtitle").innerText = "Time to celebrate Manali! 🎊";
-    document.getElementById("motivational").innerText = "The party starts now! 🥳";
-    document.getElementById("factText").innerText = "🌟 Wishing you an amazing birthday filled with love and joy! 🌟";
+    // Timer Celebration
+    const timerBox =
+      document.getElementById("timer");
 
-    const btn = document.getElementById("surpriseBtn");
-    btn.classList.add("show");
-    
+    if (timerBox) {
+
+      timerBox.innerHTML = `
+        <div class="timer-unit">
+          <span class="timer-value" style="font-size:4rem;">🎂</span>
+        </div>
+
+        <div class="timer-unit">
+          <span class="timer-value"
+          style="font-size:2.5rem;">
+          HAPPY BIRTHDAY!
+          </span>
+        </div>
+
+        <div class="timer-unit">
+          <span class="timer-value" style="font-size:4rem;">🎉</span>
+        </div>
+      `;
+    }
+
+    // Text Updates
+    document.getElementById("subtitle").innerText =
+      "Time to celebrate Manali! 🎊";
+
+    document.getElementById("motivational").innerText =
+      "The party starts now! 🥳";
+
+    document.getElementById("factText").innerText =
+      "🌟 Wishing you an amazing birthday filled with love and joy! 🌟";
+
+
+    // Unlock Gift
+    unlockSecondGift();
+
     createConfetti();
     createBirthdayConfetti();
+
     return;
   }
 
-  const days = Math.floor(gap / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((gap % (1000 * 60)) / 1000);
 
+  // Timer Values
+  const days =
+    Math.floor(gap / (1000 * 60 * 60 * 24));
+
+  const hours =
+    Math.floor(
+      (gap % (1000 * 60 * 60 * 24)) /
+      (1000 * 60 * 60)
+    );
+
+  const minutes =
+    Math.floor(
+      (gap % (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
+
+  const seconds =
+    Math.floor(
+      (gap % (1000 * 60)) / 1000
+    );
+
+
+  // Update UI
   document.getElementById("days").innerText = days;
   document.getElementById("hours").innerText = hours;
   document.getElementById("minutes").innerText = minutes;
@@ -116,54 +238,177 @@ const timer = setInterval(() => {
 
 }, 1000);
 
-// 🎊 Confetti animation
+
+
+// 🎁 Unlock Gift
+function unlockSecondGift() {
+
+  const milestone2 =
+    document.querySelector(
+      ".timeline-milestone.milestone-2"
+    );
+
+  if (milestone2) {
+    milestone2.classList.add("unlocked");
+  }
+
+  if (mysteryBox) {
+    mysteryBox.style.display = "none";
+  }
+
+  if (giftLink) {
+    giftLink.style.display = "block";
+  }
+
+  if (unlockedText) {
+    unlockedText.style.display = "block";
+  }
+
+  if (surpriseBtn) {
+    surpriseBtn.style.display = "inline-block";
+  }
+}
+
+
+// 🎊 Confetti
 function createConfetti() {
-  const confettiContainer = document.getElementById("confetti");
-  const colors = ["#ff006e", "#ffd60a", "#00d9ff", "#ff006e", "#ffd60a"];
-  
+
+  const confettiContainer =
+    document.getElementById("confetti");
+
+  if (!confettiContainer) return;
+
+  const colors = [
+    "#ff006e",
+    "#ffd60a",
+    "#00d9ff",
+    "#ffffff"
+  ];
+
   for (let i = 0; i < 100; i++) {
-    const confettiPiece = document.createElement("div");
-    confettiPiece.className = "confetti-piece";
-    confettiPiece.style.left = Math.random() * 100 + "%";
-    confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    confettiPiece.style.animationDuration = (Math.random() * 2 + 2) + "s";
-    confettiPiece.style.animationDelay = Math.random() * 0.5 + "s";
-    confettiPiece.style.borderRadius = Math.random() > 0.5 ? "50%" : "0%";
-    confettiContainer.appendChild(confettiPiece);
+
+    const piece =
+      document.createElement("div");
+
+    piece.className = "confetti-piece";
+
+    piece.style.left =
+      Math.random() * 100 + "%";
+
+    piece.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+
+    piece.style.animationDuration =
+      (Math.random() * 2 + 2) + "s";
+
+    confettiContainer.appendChild(piece);
   }
 }
 
-// 🎊 Birthday-themed confetti
+
+// 🎊 Birthday Emoji Confetti
 function createBirthdayConfetti() {
-  const confettiContainer = document.getElementById("confetti");
-  const emojis = ["🎉", "🎊", "🎈", "🎁", "🎂", "✨", "💖"];
-  
-  for (let i = 0; i < 50; i++) {
-    const confettiPiece = document.createElement("div");
-    confettiPiece.className = "confetti-piece";
-    confettiPiece.style.left = Math.random() * 100 + "%";
-    confettiPiece.style.fontSize = "1.5rem";
-    confettiPiece.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-    confettiPiece.style.animationDuration = (Math.random() * 3 + 2.5) + "s";
-    confettiPiece.style.animationDelay = Math.random() * 0.5 + "s";
-    confettiContainer.appendChild(confettiPiece);
+
+  const confettiContainer =
+    document.getElementById("confetti");
+
+  if (!confettiContainer) return;
+
+  const emojis = [
+    "🎉",
+    "🎊",
+    "🎂",
+    "🎁",
+    "✨",
+    "💖"
+  ];
+
+  for (let i = 0; i < 40; i++) {
+
+    const piece =
+      document.createElement("div");
+
+    piece.className = "confetti-piece";
+
+    piece.style.left =
+      Math.random() * 100 + "%";
+
+    piece.style.fontSize = "1.5rem";
+
+    piece.innerText =
+      emojis[Math.floor(Math.random() * emojis.length)];
+
+    piece.style.animationDuration =
+      (Math.random() * 3 + 2) + "s";
+
+    confettiContainer.appendChild(piece);
   }
 }
 
-// Add confetti fall animation to CSS
-const style = document.createElement("style");
-style.textContent = `
-  @keyframes confettiFall {
-    to {
-      transform: translateY(100vh) rotate(360deg);
-      opacity: 0;
-    }
-  }
-`;
-document.head.appendChild(style);
 
 // 🔗 Redirect
 function goToMain() {
-  window.location.href = "https://dsharshitguptaa7.github.io/birthday/";
+
+  window.location.href =
+    "https://dsharshitguptaa7.github.io/birthday/";
 }
 
+
+// 🎁 Mystery Box Click Effect
+document.addEventListener("DOMContentLoaded", () => {
+
+  const mystery =
+    document.querySelector(".mystery-box");
+
+  if (!mystery) return;
+
+  mystery.addEventListener("click", function () {
+
+    this.style.animation = "none";
+
+    setTimeout(() => {
+
+      this.style.animation =
+        "mysteryShake 0.5s ease-in-out";
+
+    }, 10);
+
+    const mysteryText =
+      this.querySelector(".mystery-text");
+
+    if (mysteryText) {
+
+      const messages = [
+        "🎊 Almost there!",
+        "⏰ Tick tock!",
+        "🎁 Getting closer!",
+        "✨ Can you feel it?",
+        "🎉 Surprise incoming!"
+      ];
+
+      mysteryText.innerText =
+        messages[
+          Math.floor(Math.random() * messages.length)
+        ];
+    }
+  });
+});
+
+
+// 🎊 Confetti Animation CSS
+const style = document.createElement("style");
+
+style.textContent = `
+@keyframes confettiFall {
+
+  to{
+    transform:
+      translateY(100vh)
+      rotate(360deg);
+
+    opacity:0;
+  }
+}
+`;
+
+document.head.appendChild(style);
